@@ -32,7 +32,6 @@ Public Module BundleConfig
             "~/lib/tailwindcss/base.css",
             "~/lib/tailwindcss/components.css",
             "~/lib/tailwindcss/utilities.css",
-            "~/lib/tailwindcss/tailwindcss.css",
             "~/lib/tailwindcss/tailwindcss-dark.css",
             "~/lib/daisyui/full.css"
         ))

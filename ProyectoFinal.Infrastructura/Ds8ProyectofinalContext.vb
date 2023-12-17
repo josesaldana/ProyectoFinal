@@ -1,6 +1,5 @@
 ﻿Imports Microsoft.EntityFrameworkCore
-Imports ProyectoFinal.Application
-Imports ProyectoFinal.Application.Entities
+Imports ProyectoFinal.Domain.Entities
 
 Partial Public Class Ds8ProyectofinalContext
     Inherits DbContext
@@ -55,8 +54,9 @@ Partial Public Class Ds8ProyectofinalContext
                     entity.Property(Function(e) e.Abierto).
                         IsRequired().
                         HasDefaultValueSql("((1))")
-                    entity.Property(Function(e) e.Descripcion).IsRequired()
-                    entity.Property(Function(e) e.DescripcionSanitizado).IsRequired()
+                    entity.Property(Function(e) e.DescripcionCorta).IsRequired()
+                    entity.Property(Function(e) e.DescripcionCompleta).IsRequired()
+                    entity.Property(Function(e) e.DescripcionCompletaSanitizado).IsRequired()
                     entity.Property(Function(e) e.EntornoDeTrabajo).
                         HasMaxLength(20).
                         IsUnicode(False)

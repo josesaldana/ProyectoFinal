@@ -31,8 +31,6 @@ Public Class MyApplication
         ProyectoFinal.Infrastructura.DependencyInjection.AddInfrastructure(container)
         ProyectoFinal.Application.DependencyInjection.AddApplication(container)
 
-        'container.AddApplication()
-
         RegisterWebPages(container)
 
         MyApplication.container = container

@@ -9,4 +9,8 @@
     <PackageReference Include="SimpleInjector" Version="5.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProyectoFinal.Domain\ProyectoFinal.Domain.vbproj" />
+  </ItemGroup>
+
 </Project>

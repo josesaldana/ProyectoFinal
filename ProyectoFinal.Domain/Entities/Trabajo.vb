@@ -7,9 +7,11 @@ Namespace Entities
 
         Public Property Titulo As String
 
-        Public Property Descripcion As String
+        Public Property DescripcionCorta As String
 
-        Public Property DescripcionSanitizado As String
+        Public Property DescripcionCompleta As String
+
+        Public Property DescripcionCompletaSanitizado As String
 
         Public Property CategoriaId As Integer
 

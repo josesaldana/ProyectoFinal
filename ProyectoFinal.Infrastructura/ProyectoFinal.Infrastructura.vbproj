@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProyectoFinal.Application\ProyectoFinal.Application.vbproj" />
+    <ProjectReference Include="..\ProyectoFinal.Domain\ProyectoFinal.Domain.vbproj" />
   </ItemGroup>
 
 </Project>
