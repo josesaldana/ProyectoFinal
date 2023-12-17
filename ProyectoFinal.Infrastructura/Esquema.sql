@@ -10,7 +10,7 @@ CREATE TABLE [Categorias] (
 	Nombre VARCHAR(50) NOT NULL,
 );
 
-INSERT INTO Categorias (Nombre) VALUES ('Conductor'),('Secretarias'),('Desarrollador de Software');
+INSERT INTO Categorias (Nombre) VALUES ('Conductor'),('Secretarias'),('Desarrollador de Software'), ('Reposteros y Panaderos');
 
 CREATE TABLE [Contratantes] (
 	[Id] INT IDENTITY PRIMARY KEY,
@@ -21,8 +21,9 @@ CREATE TABLE [Contratantes] (
 	CHECK ([Tipo] IN ('Individuo', 'Empresa'))
 );
 
-INSERT INTO [Contratantes] ([Nombre], [Tipo], [Direccion], [Contacto])
-VALUES ('Roberto Pérez', 'Individuo', 'Costa del Este', '6000-0000');
+INSERT INTO [Contratantes] ([Nombre], [Tipo], [Direccion], [Contacto]) VALUES 
+	('Roberto Pérez', 'Individuo', 'Costa del Este', '6000-0000'),
+	('La Casa Rendonda', 'Empresa', 'El Dorado', '230-0000');
 
 CREATE TABLE [Trabajos] (
 	[Id] BIGINT IDENTITY PRIMARY KEY,
@@ -62,8 +63,8 @@ VALUES (
 	'Repostero Experimentado para reconocido comercio de repostería', 
 	'<p>Necesitamos un reportero con un mímo de 5 años de experiencia para reconocida casa repostera. Salario: $800 mensuales.</p><h2>Requisitos</h2><ul><li><strong>Edad</strong>: +25 a&ntilde;os</li></ul><h2>Beneficios</h2><ul><li>Bono Anual</li></ul>', 
 	'Necesitamos un reportero con un mímo de 5 años de experiencia para reconocida casa repostera. Salario: $800 mensuales. Requisitos Edad: +25 a&ntilde;os Beneficios Bono Anual',
-	1, 
-	1,
+	4, 
+	2,
 	'Panama Oeste',
 	'Tiempo Completo',
 	'En Sitio'

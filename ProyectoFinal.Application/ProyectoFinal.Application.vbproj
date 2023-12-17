@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProyectoFinal.Domain\ProyectoFinal.Domain.vbproj" />
+    <ProjectReference Include="..\ProyectoFinal.Utils\ProyectoFinal.Utils.vbproj" />
   </ItemGroup>
 
 </Project>

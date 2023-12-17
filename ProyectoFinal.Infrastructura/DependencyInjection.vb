@@ -1,12 +1,14 @@
-﻿Imports ProyectoFinal.Domain
+﻿Imports System.Runtime.CompilerServices
 Imports ProyectoFinal.Domain.Ports
 Imports ProyectoFinal.Infrastructura.Adapters
 Imports SimpleInjector
 
-Public Class DependencyInjection
-    Public Shared Sub AddInfrastructure(ByVal container As Container)
+Public Module DependencyInjection
+
+    <Extension()>
+    Public Sub AddInfrastructure(ByVal container As Container)
         container.Register(Of Ds8ProyectofinalContext)(Lifestyle.Scoped)
-        container.Register(Of ITrabajosRepository, SqlServerTrabajosRepository)(Lifestyle.Scoped)
-        container.Register(Of IJobCategoryRepository, SqlServerJobCategoryRepository)(Lifestyle.Scoped)
+        container.Register(Of IApplicationRepository, SqlServerApplicationRepository)(Lifestyle.Scoped)
     End Sub
-End Class
+
+End Module

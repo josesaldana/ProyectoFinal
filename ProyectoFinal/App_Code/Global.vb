@@ -1,5 +1,7 @@
 ﻿Imports System.Reflection
 Imports System.Web.Routing
+Imports ProyectoFinal.Application
+Imports ProyectoFinal.Infrastructura
 Imports SimpleInjector
 Imports SimpleInjector.Advanced
 Imports SimpleInjector.Diagnostics
@@ -28,8 +30,8 @@ Public Class MyApplication
         container.Options.ResolveUnregisteredConcreteTypes = True
         container.Options.PropertySelectionBehavior = New ImportAttributePropertySelectionBehavior()
 
-        ProyectoFinal.Infrastructura.DependencyInjection.AddInfrastructure(container)
-        ProyectoFinal.Application.DependencyInjection.AddApplication(container)
+        container.AddInfrastructure()
+        container.AddApplication()
 
         RegisterWebPages(container)
 
@@ -39,15 +41,6 @@ Public Class MyApplication
     End Sub
 
     Public Shared Sub RegisterWebPages(container As Container)
-        'Dim pageTypes =
-        '        From assembly In BuildManager.GetReferencedAssemblies().Cast(Of Assembly)()
-        '        Where Not assembly.IsDynamic
-        '        Where Not assembly.GlobalAssemblyCache
-        '        From type In assembly.GetExportedTypes()
-        '        Where type.IsSubclassOf(GetType(Page))
-        '        Where Not type.IsAbstract And Not type.IsGenericType
-        '        Select type
-
         Dim pageTypes =
             From type In GetType(MyApplication).Assembly.DefinedTypes
             Where type.IsSubclassOf(GetType(Page))
@@ -65,7 +58,6 @@ Public Class MyApplication
 
     Class ImportAttributePropertySelectionBehavior
         Implements IPropertySelectionBehavior
-
         Public Function IPropertySelectionBehavior_SelectProperty(implementationType As Type, propertyInfo As PropertyInfo) As Boolean Implements IPropertySelectionBehavior.SelectProperty
             Return GetType(Page).IsAssignableFrom(implementationType) And propertyInfo.GetCustomAttributes(GetType(System.ComponentModel.Composition.ImportAttribute), True).Any()
         End Function
