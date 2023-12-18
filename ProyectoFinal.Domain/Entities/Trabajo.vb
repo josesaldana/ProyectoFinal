@@ -27,6 +27,8 @@ Namespace Entities
 
         Public Property FechaDePublicacion As Date?
 
+        Public Overridable ReadOnly Property Aplicaciones As ICollection(Of Aplicacione) = New List(Of Aplicacione)()
+
         Public Overridable Property Categoria As Categoria
 
         Public Overridable Property Contratante As Contratante

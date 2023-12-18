@@ -1,8 +1,8 @@
-﻿<%@ Page Title="Búsqueda" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="false" CodeFile="Search.aspx.vb" Inherits="Search" %>
+﻿<%@ Page Title="Búsqueda" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="false" CodeFile="Aplicar.aspx.vb" Inherits="JobApplication" Async="true" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="flex flex-col h-full shadow shadow-inner shadow-md shadow-slate-900 h-full">
-        <header class="header h-auto flex flex-row items-center bg-violet-600 bg-gradient-to-r from-violet-900">
+    <div class="flex flex-col w-full">
+        <header class="header flex flex-row items-center bg-violet-600 bg-gradient-to-r from-violet-900">
             <div class="flex items-center py-5 px-10 bg-fuchsia-500 h-full">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 1024 1024" fill="#000000" class="icon" version="1.1">
                     <path d="M325.36 993.322a7.94 7.94 0 0 1-5.952-2.656 7.996 7.996 0 0 1 0.61-11.294l1.702-1.61c9.24-9.09 14.318-21.228 14.318-34.18 0-26.462-21.528-47.99-47.99-47.99s-47.99 21.528-47.99 47.99a47.82 47.82 0 0 0 12.216 31.994c0.688 0.78 1.406 1.53 2.148 2.248a8 8 0 0 1 0.046 11.31 7.994 7.994 0 0 1-11.31 0.062c-0.96-0.968-1.898-1.936-2.804-2.952a63.806 63.806 0 0 1-16.292-42.664c0-35.29 28.706-63.986 63.986-63.986s63.986 28.698 63.986 63.986c0 17.262-6.772 33.446-19.074 45.568l-2.256 2.124a7.954 7.954 0 0 1-5.344 2.05z" fill="white"/>
@@ -24,45 +24,76 @@
                     <path d="M759.95 991.448h-63.986c-4.422 0-8-3.576-8-7.998s3.578-7.998 8-7.998h63.986c4.42 0 7.998 3.576 7.998 7.998s-3.578 7.998-7.998 7.998z" fill="white"/>
                 </svg>
             </div>
-            <div class="prose">
-                <h1 class="px-10 py-16 !text-violet-100">B&uacute;squeda de Vacantes</h1>
+            <div class="prose py-10">
+                <h1 class="px-10 !my-2 !text-violet-100">Aplicaci&oacute;n a Vacante</h1>
+                <h2 ID="LabelTituloDeTrabajo" runat="server" class="px-10 !my-2 !text-violet-100"></h2>
             </div>
         </header>
 
-        <div class="flex flex-row items-center w-full justify-center mt-10">
-            <asp:TextBox ID="TextBoxBusquedaTrabajo" runat="server" CssClass="input input-bordered w-1/4"></asp:TextBox>
-            <asp:Button ID="ButtonBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary btn-outline ml-3" />
+        <div id="ContenedorDeError" class="mx-auto flex flex-col w-1/2 my-10" runat="server" visible="false">
+            <p class="prose prose-lg w-full">
+                Ha ocurrido un error:<br />
+                <asp:Literal ID="LiteralErrorText" runat="server"></asp:Literal>
+            </p>
         </div>
 
-        <div class="w-full flex flex-row mt-10">
-            <div class="w-1/4 px-5">
-                <asp:Repeater ID="RepetidorDeFacetasDeBusqueda" runat="server">
-                    <ItemTemplate>
-                        <div class="p-5 flex flex-col">
-                            <asp:PlaceHolder ID="FiltrosItemControlPlaceholder" runat="server"></asp:PlaceHolder>
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
+        <div id="ContenedorDeFormualario" class="mx-auto flex flex-col w-1/2 my-10" runat="server">
+            <div class="prose prose-lg my-5">
+                <h3 class="!text-violet-100">Descripci&oacute;n:</h3>
+                <div class="prose prose-lg w-full !text-white !my-0">
+                    <asp:Literal ID="ParrafoDescripcionDeTrabajo" runat="server" Mode="PassThrough"></asp:Literal>
+                </div>
             </div>
 
-            <div id="DivContenedorListaDeResultados" runat="server" visible="false" class="flex flex-col items-strech w-ful">
-                <ul id="ListaDeResultados" runat="server" class="list-disc">
-                    <asp:Repeater ID="RepetidorDeResultados" runat="server">
-                        <ItemTemplate>
-                            <li class="flex flex-col my-5">
-                                <a href="Vacante.aspx?Id=<%# Container.DataItem.Id %>" class="link link-info">
-                                    <strong><%# Container.DataItem.Titulo %></strong>
-                                </a>
-                                <p><%# Container.DataItem.DescripcionCorta %></p>
-                            </li>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </ul>
-                <p class="prose">
-                    (<asp:Label ID="LabelTotalDeResultados" runat="server" Text="Label" CssClass="py-5"></asp:Label> en total)
-                </p>
-            </div>
+            <section class="grid grid-cols-4-form gap-5 auto-cols-max items-center my-8 !text-white">
+                <div class="prose prose-lg my-5 col-span-4 !my-0">
+                    <h3 class="!text-white">Datos Generales</h3>
+                </div>
+                <label for="nombre">Nombre:</label>
+                <asp:TextBox ID="TextBoxNombre" CssClass="input input-bordered" runat="server" />
+                <label for="apellido">Apellido:</label>
+                <asp:TextBox ID="TextBoxApellido" CssClass="input input-bordered" runat="server" />
+                <label for="nombre">Edad:</label>
+                <asp:TextBox ID="TextBoxEdad" CssClass="input input-bordered" TextMode="Number" runat="server" />
+                <label for="apellido">Fecha De Nacimiento:</label>
+                <asp:TextBox ID="TextBoxFechaDeNacimiento" CssClass="input input-bordered" TextMode="Date" runat="server" />
+            </section>
+
+            <section class="grid grid-cols-1 gap-5 auto-cols-max items-center my-8 !text-white">
+                <div class="prose prose-lg col-span-1 !my-0">
+                    <h3 class="!text-white">Aptitudes y Experiencia</h3>
+                </div>
+                <label for="educacion" class="col-span-1">Educaci&oacute;n:</label>
+                <asp:TextBox ID="TextBoxEducacion" CssClass="textarea textarea-bordered textarea-xs col-span-1 w-full h-48" TextMode="MultiLine" Rows="5" runat="server" />
+                <label for="habilidades" class="col-span-1">Habilidades y Destrezas:</label>
+                <asp:TextBox ID="TextBoxHabilidades" CssClass="textarea textarea-bordered textarea-xs col-span-1 w-full h-48" TextMode="MultiLine" Rows="5" runat="server" />
+                <label for="experiencias" class="col-span-1">Experiencia:</label>
+                <asp:TextBox ID="TextBoxExperiencia" CssClass="textarea textarea-bordered textarea-xs col-span-1 w-full h-48" TextMode="MultiLine" Rows="5" runat="server" />
+                <label for="hoja-de-vida">Hoja de Vida:</label>
+                <asp:FileUpload ID="FileUploadCV" runat="server" AllowMultiple="false" />
+            </section>
+
+            <section class="grid grid-cols-4-form gap-5 auto-cols-max items-center my-8 !text-white">
+                <div class="prose prose-lg my-5 col-span-4 !my-0">
+                    <h3 class="!text-white">Contacto</h3>
+                </div>
+                <label for="telefono">Tel&eacute;fono:</label>
+                <asp:TextBox ID="TextBoxTelefono" CssClass="input input-bordered" TextMode="Phone" runat="server" />
+                <label for="email">Email:</label>
+                <asp:TextBox ID="TextBoxEmail" CssClass="input input-bordered" TextMode="Email" runat="server" />
+            </section>
+
+            <asp:Button ID="ButtonAplicar" runat="server" CssClass="btn btn-primary bg-fuchsia-400 self-center w-64 mt-7 mb-10" OnClick="ButtonAplicar_Click" Text="Aplicar" />
         </div>
+
+        <div id="ContenedorDeConfirmacion" class="flex flex-col w-1/2 mx-auto my-10 w-full" runat="server" visible="false">
+            <p class="prose prose-lg mx-auto mt-10 !text-white">
+                Su aplicaci&oacute;n ha sido registrada satisfactorialmente y ser&aacute; evaluada por el publicante de la vacante.  
+                De ser seleccionado se le estar&aacute; contactando para coordinar los siguientes pasos en v&iacute;as a una contrataci&oacute;n. 
+                El publicante ha de marcar su aplicaci&oacute;n como evaluada como m&iacute;nimo.
+            </p>
+            <asp:HyperLink NavigateUrl="/Search.aspx" CssClass="btn btn-primary bg-fuchsia-500
+
     </div>
 </asp:Content>
 

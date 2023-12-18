@@ -12,6 +12,7 @@ Partial Class JobDetails
 
             LabelTituloDeTrabajo.InnerText = detalleDeTrabajo.Titulo
             ParrafoDescripcionDeTrabajo.Text = detalleDeTrabajo.DescripcionCompleta
+            HipervinculoAplicar.NavigateUrl = "Aplicar.aspx/?vacante=" & CType(detalleDeTrabajo.Id, String)
         End If
     End Sub
 End Class

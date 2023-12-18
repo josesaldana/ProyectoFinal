@@ -23,7 +23,8 @@
 
                     // Complex site-specific column configuration
                     'footer': '200px minmax(900px, 1fr) 100px',
-                    'search-facets': 'auto 1fr'
+                    'search-facets': 'auto 1fr',
+                    '4-form': 'auto 1fr auto 1fr'
                 }
             }
           }
@@ -53,10 +54,10 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <header>
-            <div class="navbar bg-base-100">
+        <header class="flex flex-col justify-between">
+            <div class="navbar bg-base-100 bg-gradient-to-t from-white-900">
               <div class="flex-1">
-                <h1 class="text-2xl ml-10 !text-violet-100"><a href="/">i-Work</a></h1>
+                <h1 class="text-2xl ml-5 !text-violet-100"><a href="/">i-Work</a></h1>
               </div>
               <div class="flex-none">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -75,7 +76,7 @@
               </div>
             </div>
         </header>
-        <div class="flex flex-col h-screen justify-between bg-base-200 w-full">
+        <div class="flex flex-col justify-between bg-base-200 w-full h-full overflow-y-auto">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
             <footer class="footer p-10 bg-base-300 text-base-content sticky">
               <%--<nav>
@@ -99,5 +100,17 @@
             </footer>
         </div>
     </form>
+    <!-- Place the first <script> tag in your HTML's <head> -->
+    <%--<script src="https://cdn.tiny.cloud/1/g6e0myurye82ybaalsr0wosz51q5nkoke4d2aol79f2rbzb4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+    <script>
+        tinymce.init({
+            selector: 'textarea',  // change this value according to your HTML
+            menubar: false,
+            skin: (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'oxide-dark' : 'oxide'),
+            content_css: (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default')
+        });
+    </script>--%>
 </body>
 </html>
