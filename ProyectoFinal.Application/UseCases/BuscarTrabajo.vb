@@ -10,6 +10,10 @@ Namespace UseCases
             Me.repositorioDeAplicacion = repositorioDeAplicacion
         End Sub
 
+        Public Function Invocar(id As Integer) As Trabajo
+            Return repositorioDeAplicacion.Trabajos.FirstOrDefault(Function(t) t.Id = id)
+        End Function
+
         Public Function Invocar(criterio As CriterioDeBusqueda, filtros As FiltrosDeBusqueda) As ResultadoDeBusqueda(Of Trabajo)
             Dim matchesTermino = If(
                 criterio.Termino = "*",

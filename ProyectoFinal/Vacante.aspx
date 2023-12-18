@@ -1,7 +1,7 @@
-﻿<%@ Page Title="Búsqueda" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="false" CodeFile="Search.aspx.vb" Inherits="Search" %>
+﻿<%@ Page Title="Detalle de Trabajo" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="false" CodeFile="Vacante.aspx.vb" Inherits="JobDetails" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="flex flex-col h-full shadow shadow-inner shadow-md shadow-slate-900">
+    <div class="flex flex-col h-full w-full">
         <header class="header h-auto flex flex-row items-center bg-violet-600 bg-gradient-to-r from-violet-900">
             <div class="h-full flex items-center py-5 px-10 bg-fuchsia-400">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 1024 1024" fill="#000000" class="icon" version="1.1">
@@ -25,43 +25,20 @@
                 </svg>
             </div>
             <div class="prose">
-                <h1 class="px-10 py-16 !text-violet-100">B&uacute;squeda de Vacantes</h1>
+                <h1 class="px-10 py-16 !text-violet-100">Detalle de Vacante</h1>
             </div>
         </header>
 
-        <div class="flex flex-row items-center w-full justify-center mt-10">
-            <asp:TextBox ID="TextBoxBusquedaTrabajo" runat="server" CssClass="input input-bordered w-1/4"></asp:TextBox>
-            <asp:Button ID="ButtonBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary btn-outline ml-3" />
-        </div>
-
-        <div class="w-full flex flex-row mt-10">
-            <div class="w-1/4 px-5">
-                <asp:Repeater ID="RepetidorDeFacetasDeBusqueda" runat="server">
-                    <ItemTemplate>
-                        <div class="p-5 flex flex-col">
-                            <asp:PlaceHolder ID="FiltrosItemControlPlaceholder" runat="server"></asp:PlaceHolder>
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
+        <div class="mx-auto flex flex-col w-full my-10">
+            <div class="prose prose-md mx-auto w-1/2 my-5">
+                <h2 ID="LabelTituloDeTrabajo" runat="server" class="!text-violet-100"></h2>
             </div>
 
-            <div id="DivContenedorListaDeResultados" runat="server" visible="false" class="flex flex-col items-strech w-ful">
-                <ul id="ListaDeResultados" runat="server" class="list-disc">
-                    <asp:Repeater ID="RepetidorDeResultados" runat="server">
-                        <ItemTemplate>
-                            <li class="flex flex-col my-5">
-                                <a href="Vacante.aspx?Id=<%# Container.DataItem.Id %>" class="link link-info">
-                                    <strong><%# Container.DataItem.Titulo %></strong>
-                                </a>
-                                <p><%# Container.DataItem.DescripcionCorta %></p>
-                            </li>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </ul>
-                <p class="prose">
-                    (<asp:Label ID="LabelTotalDeResultados" runat="server" Text="Label" CssClass="py-5"></asp:Label> en total)
-                </p>
+            <div class="prose prose-md mx-auto w-1/2 !text-white">
+                <asp:Literal ID="ParrafoDescripcionDeTrabajo" runat="server" Mode="PassThrough"></asp:Literal>
             </div>
+
+            <asp:Button ID="ButtonApplyJob" runat="server" CssClass="btn btn-primary bg-fuchsia-400 self-center w-64 mt-10 mb-5" Text="Aplicar" />
         </div>
     </div>
 </asp:Content>

@@ -48,8 +48,8 @@ INSERT INTO Trabajos ([Titulo], [DescripcionCorta], [DescripcionCompleta], [Desc
 VALUES (
 	'Conductor', 
 	'Conductor privado para persona discapacitada.', 
-	'<p>Conductor privado para persona discapacitada. Salario: $800 mensuales.</p><h2>Requisitos</h2><ul><li><strong>Edad</strong>: +25 a&ntilde;os</li></ul><h2>Beneficios</h2><ul><li>Bono Anual</li></ul>', 
-	'Conductor privado para persona discapacitada. Salario: $800 mensuales. Requisitos Edad: +25 a&ntilde;os Beneficios Bono Anual',
+	'<p>Conductor privado para persona discapacitada.  Debe llevar a la persona a diligencias 4 veces por semana en horas de la ma&ntilde;ana.</p><h4 style="color: white">Salario</h4><p>$800 mensuales.</p><h4 style="color: white">Requisitos</h4><ul><li><strong style="color: white">Edad</strong style="color: white">: +25 a&ntilde;os</li></ul><h4 style="color: white">Beneficios</h4><ul><li>Bono Anual</li><li>Seguro M&eacute;dico</li><li>Almuerzo al regresar</li></ul>', 
+	'Conductor privado para persona discapacitada. Salario: $800 mensuales. Requisitos Edad: +30 a&ntilde;os Beneficios Bono Anual',
 	1, 
 	1,
 	'Panamá',
@@ -61,7 +61,7 @@ INSERT INTO Trabajos ([Titulo], [DescripcionCorta], [DescripcionCompleta], [Desc
 VALUES (
 	'Repostero Experimentado', 
 	'Repostero Experimentado para reconocido comercio de repostería', 
-	'<p>Necesitamos un reportero con un mímo de 5 años de experiencia para reconocida casa repostera. Salario: $800 mensuales.</p><h2>Requisitos</h2><ul><li><strong>Edad</strong>: +25 a&ntilde;os</li></ul><h2>Beneficios</h2><ul><li>Bono Anual</li></ul>', 
+	'<p>Necesitamos un reportero con un mímo de 5 años de experiencia para reconocida casa repostera.</p><h4 style="color: white">Salario</h4><p>$800 mensuales.</p><h4 style="color: white">Requisitos</h4><ul><li><strong style="color: white">Edad</strong>: +25 a&ntilde;os</li></ul><h4 style="color: white">Beneficios</h4><ul><li>Bono Anual</li><li>Seguro M&eacute;dico</li></ul>', 
 	'Necesitamos un reportero con un mímo de 5 años de experiencia para reconocida casa repostera. Salario: $800 mensuales. Requisitos Edad: +25 a&ntilde;os Beneficios Bono Anual',
 	4, 
 	2,
@@ -74,7 +74,7 @@ INSERT INTO Trabajos ([Titulo], [DescripcionCorta], [DescripcionCompleta], [Desc
 VALUES (
 	'Conductor para Metrobus', 
 	'Conductor de bus articulado', 
-	'<p>Conductor de con experiencia en buses articulados. Salario: $1000 mensuales.</p><h2>Requisitos</h2><ul><li><strong>Edad</strong>: +25 a&ntilde;os</li></ul><h2>Beneficios</h2><ul><li>Bono Anual</li></ul>', 
+	'<p>Conductor de con experiencia en buses articulados.</p><h4 style="color: white">Salario</h4><p>$1000 mensuales.</p><h4 style="color: white">Requisitos</h4><ul><li><strong style="color: white">Edad</strong>: +25 a&ntilde;os</li></ul><h4 style="color: white">Beneficios</h4><ul><li>Bono Anual</li><li>Seguro M&eacute;dico</li></ul>', 
 	'Conductor de con experiencia en buses articulados. Salario: $1000 mensuales. Requisitos Edad: +25 a&ntilde;os Beneficios Bono Anual',
 	1, 
 	1,
