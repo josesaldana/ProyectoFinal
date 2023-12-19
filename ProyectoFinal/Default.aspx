@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="hero bg-violet-600 bg-gradient-to-r from-violet-900 h-full">
       <div class="hero-content text-center w-2/3 flex flex-col">
-        <svg xmlns="http://www.w3.org/2000/svg" width="400px" height="400px" viewBox="0 0 1024 1024" fill="#000000" class="icon" version="1.1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="350px" height="100%" viewBox="0 0 1024 1024" fill="#000000" class="icon" version="1.1">
             <path d="M325.36 993.322a7.94 7.94 0 0 1-5.952-2.656 7.996 7.996 0 0 1 0.61-11.294l1.702-1.61c9.24-9.09 14.318-21.228 14.318-34.18 0-26.462-21.528-47.99-47.99-47.99s-47.99 21.528-47.99 47.99a47.82 47.82 0 0 0 12.216 31.994c0.688 0.78 1.406 1.53 2.148 2.248a8 8 0 0 1 0.046 11.31 7.994 7.994 0 0 1-11.31 0.062c-0.96-0.968-1.898-1.936-2.804-2.952a63.806 63.806 0 0 1-16.292-42.664c0-35.29 28.706-63.986 63.986-63.986s63.986 28.698 63.986 63.986c0 17.262-6.772 33.446-19.074 45.568l-2.256 2.124a7.954 7.954 0 0 1-5.344 2.05z" fill="#ebb134"/>
             <path d="M304.042 967.578a7.972 7.972 0 0 1-5.654-2.344l-31.994-31.994a7.996 7.996 0 1 1 11.31-11.31l31.994 31.994a7.996 7.996 0 0 1-5.656 13.654z" fill="#ebb134"/>
             <path d="M280.174 991.448a7.996 7.996 0 0 1-5.656-13.654l23.872-23.87a7.996 7.996 0 1 1 11.31 11.31l-23.87 23.87a7.98 7.98 0 0 1-5.656 2.344zM272.05 935.584a7.96 7.96 0 0 1-5.476-2.172 8 8 0 0 1-0.352-11.31l61.988-65.984a8.002 8.002 0 0 1 11.654 10.964l-61.988 65.986a7.964 7.964 0 0 1-5.826 2.516z" fill="#ebb134"/>
@@ -28,7 +28,7 @@
         <p class="py-2 w-1/2">¡Encuentre el oficio que busca y sue&ntilde;a en minutos y aplique! ¡Muchas vacantes esperan por t&iacute;!</p>
 
         <div class="flex flex-row items-center mt-10">
-            <div class="w-full px-10">
+            <div class="w-full px-10 justify-start self-start">
                 <p class="py-6">Ingresa el t&eacute;rmino relacionado a tu b&uacute;squeda y seleccione Buscar.</p>
                 <div class="flex flex-row items-center justify-center">
                     <asp:TextBox ID="TextBoxBusquedaTrabajo" runat="server" CssClass="input input-bordered w-1/2"></asp:TextBox>
@@ -36,11 +36,41 @@
                 </div>
             </div>
             <div class="divider lg:divider-horizontal">O</div> 
-            <div class="w-full px-10">
-              <p class="py-6">Explora las vacantes disponibles y aplica a la que sientas que eres un buen candidato!</p>
-              <a  href="Search.aspx" class="btn btn-primary ml-3">Ver Vacantes</a>
+            <div class="w-full px-10 self-start">
+                <p class="py-6">Explora las vacantes disponibles y aplica a la que sientas que eres un buen candidato!</p>
+                <a  href="Search.aspx" class="btn btn-primary ml-3">Ver Vacantes</a>
+
+                <p class="!text-white mt-10 mb-5 text-center">Oficios m&aacute;s solicitados</p>
+
+                <ul class="flex flex-row flex-wrap justify-center" runat="server">
+                    <asp:Repeater ID="RepeaterGruposTrabajosPorOficio" runat="server">
+                        <ItemTemplate>
+                            <li class="flex flex-row m-2">
+                                <a class="btn" href="Search.aspx?term=<%# Container.DataItem.Grupo %>">
+                                    <%# Container.DataItem.Grupo %>
+                                    <div class="badge badge-secondary"><%# Container.DataItem.Cantidad %></div>
+                                </a>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </ul>
             </div>
         </div>
+
+        <%--<p class="prose prose-xs !text-white mt-24">Oficios m&aacute;s solicitados</p>
+
+        <ul class="flex flex-row space-x-6 mb-5" runat="server">
+            <asp:Repeater ID="RepeaterGruposTrabajosPorOficio" runat="server">
+                <ItemTemplate>
+                    <li>
+                        <button class="btn">
+                          <%# Container.DataItem.Grupo %>
+                          <div class="badge badge-secondary"><%# Container.DataItem.Cantidad %></div>
+                        </button>
+                    </li>
+                </ItemTemplate>
+            </asp:Repeater>
+        </ul>--%>
       </div>
     </div>
 </asp:Content>

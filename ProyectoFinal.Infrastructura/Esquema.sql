@@ -12,7 +12,11 @@ CREATE TABLE [Categorias] (
 	Nombre VARCHAR(50) NOT NULL,
 );
 
-INSERT INTO Categorias (Nombre) VALUES ('Conductor'),('Secretarias'),('Desarrollador de Software'), ('Reposteros y Panaderos');
+INSERT INTO Categorias (Nombre) VALUES 
+		('Conductores'),('Secretarias'), ('Panaderos'), ('Electricistas'),
+		('Soldadores'),('Albañiles'),('Plomeros'), ('Empleada Doméstica'), 
+		('Carpinteros'), ('Cajeros'), ('Sastres'), ('Policías'), ('Barberos'),
+		('Desarrollador de Software'), ('Periodista'), ('Ingeniero'), ('Profesor');
 
 CREATE TABLE [Contratantes] (
 	[Id] INT IDENTITY PRIMARY KEY,
@@ -52,7 +56,7 @@ VALUES (
 	'Conductor privado para persona discapacitada.  Debe llevar a la persona a diligencias 4 veces por semana en horas.', 
 	'<p>Conductor privado para persona discapacitada.  Debe llevar a la persona a diligencias 4 veces por semana en horas de la ma&ntilde;ana.</p><h4 style="color: white">Salario</h4><p>$800 mensuales.</p><h4 style="color: white">Requisitos</h4><ul><li><strong style="color: white">Edad</strong style="color: white">: +25 a&ntilde;os</li></ul><h4 style="color: white">Beneficios</h4><ul><li>Bono Anual</li><li>Seguro M&eacute;dico</li><li>Almuerzo al regresar</li></ul>', 
 	'Conductor privado para persona discapacitada. Salario: $800 mensuales. Requisitos Edad: +30 a&ntilde;os Beneficios Bono Anual',
-	1, 
+	(SELECT TOP 1 Id FROM Categorias WHERE [Nombre] = 'Conductores'),
 	1,
 	'Panamá',
 	'Tiempo Parcial',
@@ -65,7 +69,7 @@ VALUES (
 	'Repostero Experimentado para reconocido comercio de repostería', 
 	'<p>Necesitamos un reportero con un mímo de 5 años de experiencia para reconocida casa repostera.</p><h4 style="color: white">Salario</h4><p>$800 mensuales.</p><h4 style="color: white">Requisitos</h4><ul><li><strong style="color: white">Edad</strong>: +25 a&ntilde;os</li></ul><h4 style="color: white">Beneficios</h4><ul><li>Bono Anual</li><li>Seguro M&eacute;dico</li></ul>', 
 	'Necesitamos un reportero con un mímo de 5 años de experiencia para reconocida casa repostera. Salario: $800 mensuales. Requisitos Edad: +25 a&ntilde;os Beneficios Bono Anual',
-	4, 
+	(SELECT TOP 1 Id FROM Categorias WHERE [Nombre] = 'Panaderos'), 
 	2,
 	'Panama Oeste',
 	'Tiempo Completo',
@@ -78,11 +82,24 @@ VALUES (
 	'Conductor de bus articulado', 
 	'<p>Conductor de con experiencia en buses articulados.</p><h4 style="color: white">Salario</h4><p>$1000 mensuales.</p><h4 style="color: white">Requisitos</h4><ul><li><strong style="color: white">Edad</strong>: +25 a&ntilde;os</li></ul><h4 style="color: white">Beneficios</h4><ul><li>Bono Anual</li><li>Seguro M&eacute;dico</li></ul>', 
 	'Conductor de con experiencia en buses articulados. Salario: $1000 mensuales. Requisitos Edad: +25 a&ntilde;os Beneficios Bono Anual',
-	1, 
+	(SELECT TOP 1 Id FROM Categorias WHERE [Nombre] = 'Conductores'), 
 	1,
 	'Panamá',
 	'Tiempo Completo',
 	'En Sitio'
+);
+
+INSERT INTO Trabajos ([Titulo], [DescripcionCorta], [DescripcionCompleta], [DescripcionCompletaSanitizado], [CategoriaId], [ContratanteId], [Ubicacion], [Tipo], [EntornoDeTrabajo])
+VALUES (
+	'Desarrollador de Software con Python', 
+	'Desarrollador de Software con Python para sistema legacy', 
+	'<p>Desarrollador de Software con Visual Basic para sistema legacy.</p><h4 style="color: white">Salario</h4><p>$3500 mensuales.</p><h4 style="color: white">Requisitos</h4><ul><li><strong style="color: white">Idioma</strong>: Ingl&eacute;s</li></ul><h4 style="color: white">Beneficios</h4><ul><li>Bono Anual</li><li>Seguro M&eacute;dico</li><li>Equipo</li><li>Beca de Estudio</li></ul>', 
+	'Desarrollador de Software con Visual Basic para sistema legacy. Salario: $3500 mensuales. Requisitos Idioma: Inglés Beneficios Bono Anual Equipo Beca de Estudio',
+	(SELECT TOP 1 Id FROM Categorias WHERE [Nombre] = 'Desarrollador de Software'), 
+	1,
+	'Estados Unidos',
+	'Tiempo Completo',
+	'Remoto'
 );
 
 

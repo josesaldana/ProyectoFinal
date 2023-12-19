@@ -87,13 +87,18 @@
         </div>
 
         <div id="ContenedorDeConfirmacion" class="flex flex-col w-1/2 mx-auto my-10 w-full" runat="server" visible="false">
-            <p class="prose prose-lg mx-auto mt-10 !text-white">
-                Su aplicaci&oacute;n ha sido registrada satisfactorialmente y ser&aacute; evaluada por el publicante de la vacante.  
-                De ser seleccionado se le estar&aacute; contactando para coordinar los siguientes pasos en v&iacute;as a una contrataci&oacute;n. 
-                El publicante ha de marcar su aplicaci&oacute;n como evaluada como m&iacute;nimo.
-            </p>
-            <asp:HyperLink NavigateUrl="/Search.aspx" CssClass="btn btn-primary bg-fuchsia-500
+            <div class="prose prose-lg !text-white mx-auto">
+                <h2 class="!text-white text-center">Confirmaci&oacute;n</h2>
 
+                <p class="mx-auto mt-10">
+                    Su aplicaci&oacute;n ha sido registrada satisfactorialmente y ser&aacute; evaluada por el publicante de la vacante.  
+                    De ser seleccionado se le estar&aacute; contactando para coordinar los siguientes pasos en v&iacute;as a una contrataci&oacute;n. 
+                    El publicante ha de marcar su aplicaci&oacute;n como evaluada como m&iacute;nimo.
+                </p>
+            </div>
+            
+            <asp:HyperLink NavigateUrl="/Search.aspx" CssClass="btn btn-primary bg-fuchsia-500 w-1/6 mt-10 mx-auto" runat="server">Ver Vacantes</asp:HyperLink>
+        </div>
     </div>
 </asp:Content>
 
